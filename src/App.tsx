@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +16,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   console.log("App component is rendering");
+  console.log("All page imports successful");
   
   return (
     <QueryClientProvider client={queryClient}>
