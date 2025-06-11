@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -112,8 +113,19 @@ const Blog = () => {
             animate={headingVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-orbitron font-bold mb-4 relative heading-glow">
+            <h2 className="text-3xl md:text-5xl font-orbitron font-bold mb-4 relative inline-block">
               <span className="text-cyber relative z-10">Latest Posts</span>
+              <span 
+                className="absolute inset-0 text-cyber opacity-30 blur-[2px] scale-105"
+                style={{
+                  background: 'linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)))',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                Latest Posts
+              </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mt-4"></div>
           </motion.div>
