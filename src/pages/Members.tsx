@@ -6,6 +6,7 @@ import { Github, Linkedin, Mail, ChevronDown, Users, Calendar, Trophy } from 'lu
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import SkillsDisplay from '@/components/SkillsDisplay';
 import Navbar from '@/components/Navbar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 // import Footer from '@/components/Footer';
 
 const Members = () => {
@@ -14,6 +15,14 @@ const Members = () => {
   const [membersHeaderRef, membersHeaderVisible] = useScrollAnimation();
   const [membersRef, membersVisible] = useScrollAnimation();
   const [heroStatsRef, heroStatsVisible] = useScrollAnimation();
+
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase();
+  };
 
   const scrollToNextSection = () => {
     const aboutSection = document.querySelector('#members-stats');
@@ -247,11 +256,14 @@ const Members = () => {
                 }}
               >
                 <div className="relative">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-48 object-cover transition-all duration-300 member-image"
-                  />
+                  <div className="w-full h-48 flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
+                    <Avatar className="w-32 h-32">
+                      <AvatarImage src={member.image} alt={member.name} className="object-cover" />
+                      <AvatarFallback className="bg-primary/20 text-primary font-bold text-xl">
+                        {getInitials(member.name)}
+                      </AvatarFallback>
+                    </Avatar>
+                  </div>
                   <div className="absolute bottom-0 left-0 right-0 h-24 member-fade"></div>
                 </div>
                 
